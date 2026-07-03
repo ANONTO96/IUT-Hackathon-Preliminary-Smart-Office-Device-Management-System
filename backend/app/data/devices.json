@@ -1,0 +1,184 @@
+[
+  {
+    "id": 1,
+    "name": "Drawing Fan 1",
+    "room": "Drawing Room",
+    "type": "Fan",
+    "status": false,
+    "power": 0,
+    "rated_power": 60,
+    "last_updated": null
+  },
+  {
+    "id": 2,
+    "name": "Drawing Fan 2",
+    "room": "Drawing Room",
+    "type": "Fan",
+    "status": false,
+    "power": 0,
+    "rated_power": 60,
+    "last_updated": null
+  },
+  {
+    "id": 3,
+    "name": "Drawing Light 1",
+    "room": "Drawing Room",
+    "type": "Light",
+    "status": false,
+    "power": 0,
+    "rated_power": 15,
+    "last_updated": null
+  },
+  {
+    "id": 4,
+    "name": "Drawing Light 2",
+    "room": "Drawing Room",
+    "type": "Light",
+    "status": false,
+    "power": 0,
+    "rated_power": 15,
+    "last_updated": null
+  },
+  {
+    "id": 5,
+    "name": "Drawing Light 3",
+    "room": "Drawing Room",
+    "type": "Light",
+    "status": false,
+    "power": 0,
+    "rated_power": 15,
+    "last_updated": null
+  },
+
+  {
+    "id": 6,
+    "name": "Work Room 1 Fan 1",
+    "room": "Work Room 1",
+    "type": "Fan",
+    "status": false,
+    "power": 0,
+    "rated_power": 60,
+    "last_updated": null
+  },
+  {
+    "id": 7,
+    "name": "Work Room 1 Fan 2",
+    "room": "Work Room 1",
+    "type": "Fan",
+    "status": false,
+    "power": 0,
+    "rated_power": 60,
+    "last_updated": null
+  },
+  {
+    "id": 8,
+    "name": "Work Room 1 Light 1",
+    "room": "Work Room 1",
+    "type": "Light",
+    "status": false,
+    "power": 0,
+    "rated_power": 15,
+    "last_updated": null
+  },
+  {
+    "id": 9,
+    "name": "Work Room 1 Light 2",
+    "room": "Work Room 1",
+    "type": "Light",
+    "status": false,
+    "power": 0,
+    "rated_power": 15,
+    "last_updated": null
+  },
+  {
+    "id": 10,
+    "name": "Work Room 1 Light 3",
+    "room": "Work Room 1",
+    "type": "Light",
+    "status": false,
+    "power": 0,
+    "rated_power": 15,
+    "last_updated": null
+  },
+
+  {
+    "id": 11,
+    "name": "Work Room 2 Fan 1",
+    "room": "Work Room 2",
+    "type": "Fan",
+    "status": false,
+    "power": 0,
+    "rated_power": 60,
+    "last_updated": null
+  },
+  {
+    "id": 12,
+    "name": "Work Room 2 Fan 2",
+    "room": "Work Room 2",
+    "type": "Fan",
+    "status": false,
+    "power": 0,
+    "rated_power": 60,
+    "last_updated": null
+  },
+  {
+    "id": 13,
+    "name": "Work Room 2 Light 1",
+    "room": "Work Room 2",
+    "type": "Light",
+    "status": false,
+    "power": 0,
+    "rated_power": 15,
+    "last_updated": null
+  },
+  {
+    "id": 14,
+    "name": "Work Room 2 Light 2",
+    "room": "Work Room 2",
+    "type": "Light",
+    "status": false,
+    "power": 0,
+    "rated_power": 15,
+    "last_updated": null
+  },
+  {
+    "id": 15,
+    "name": "Work Room 2 Light 3",
+    "room": "Work Room 2",
+    "type": "Light",
+    "status": false,
+    "power": 0,
+    "rated_power": 15,
+    "last_updated": null
+  },
+  {
+  "id": 16,
+  "name": "Drawing Room Door",
+  "room": "Drawing Room",
+  "type": "Door",
+  "status": false,
+  "power": 0,
+  "rated_power": 0,
+  "last_updated": null
+},
+{
+  "id": 17,
+  "name": "Work Room 1 Door",
+  "room": "Work Room 1",
+  "type": "Door",
+  "status": false,
+  "power": 0,
+  "rated_power": 0,
+  "last_updated": null
+},
+{
+  "id": 18,
+  "name": "Work Room 2 Door",
+  "room": "Work Room 2",
+  "type": "Door",
+  "status": false,
+  "power": 0,
+  "rated_power": 0,
+  "last_updated": null
+}
+]
