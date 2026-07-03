@@ -1,0 +1,11 @@
+json
+pathlib
+datatime
+asyncio
+random
+
+fastapi
+uvicorn[standard]
+websockets
+python-dotenv
+pydantic
