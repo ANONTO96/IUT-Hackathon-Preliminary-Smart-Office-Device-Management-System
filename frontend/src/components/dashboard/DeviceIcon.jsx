@@ -1,4 +1,8 @@
-import { Fan, Lightbulb, DoorOpen } from "lucide-react";
+import {
+  Fan,
+  Lightbulb,
+  DoorOpen,
+} from "lucide-react";
 
 function DeviceIcon({ device }) {
   if (!device) return null;
