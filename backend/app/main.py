@@ -17,17 +17,17 @@ async def lifespan(app: FastAPI):
     Runs once when FastAPI starts.
     """
 
-    simulator = DeviceSimulator()
+    # simulator = DeviceSimulator()
 
     # Start simulator in background
-    simulator_task = asyncio.create_task(simulator.start())
+    # simulator_task = asyncio.create_task(simulator.start())
 
     print("✅ Simulator started.")
 
     yield
 
     # Stop simulator when FastAPI shuts down
-    simulator_task.cancel()
+    # simulator_task.cancel()
 
     print("🛑 Simulator stopped.")
 

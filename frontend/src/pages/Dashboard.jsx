@@ -18,7 +18,7 @@ function Dashboard() {
     socket.onmessage = (event) => {
       try {
         const updated = JSON.parse(event.data);
-
+        // console.log("WS RECEIVED:", updated);
         setDevices((prev) =>
           prev.map((d) =>
             d.id === updated.id ? updated : d

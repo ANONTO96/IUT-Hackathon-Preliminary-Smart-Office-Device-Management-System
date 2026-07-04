@@ -1,10 +1,25 @@
 # 🏢 Smart Office Device Management System
 
-A Smart Office Monitoring System that simulates IoT devices and provides real-time monitoring through a React Dashboard and Discord Bot using a centralized FastAPI backend.
+A real-time Smart Office Monitoring System built for the **IUT CSE TechFest 2026 Hackathon**. The system simulates and monitors IoT devices through a centralized FastAPI backend, providing live updates to a React dashboard and external IoT devices such as ESP32.
 
 ---
 
-## 📌 System Architecture
+# 📌 Features
+
+- ⚡ Real-time device monitoring
+- 🔄 Live updates using WebSocket
+- 🌐 RESTful API for IoT integration
+- 🏢 Interactive office floor layout
+- 📊 Live power consumption tracking
+- 📈 Device runtime & energy calculation
+- 🚪 Smart Door monitoring
+- 💡 Light & Fan status visualization
+- 🔌 Ready for ESP32 integration
+- 🤖 Designed for future Discord Bot support
+
+---
+
+# 🏗 System Architecture
 
 <p align="center">
     <img src="docs/system-architecture.png" width="100%">
@@ -12,99 +27,210 @@ A Smart Office Monitoring System that simulates IoT devices and provides real-ti
 
 ---
 
-## 🏗 Architecture Overview
-
-The project follows a centralized backend architecture where the FastAPI server acts as the **Single Source of Truth**.
-
-### Data Flow
+# 🔄 Data Flow
 
 ```text
-18 Simulated Devices
-        │
-        ▼
-Python Device Simulator
-        │
-        ▼
-Device State Manager
-(In-Memory JSON Store)
-        │
-        ▼
-FastAPI Backend
-        │
- ┌──────┼──────────────┐
- │      │              │
-REST  WebSocket   Alert Engine
- │      │              │
- ▼      ▼              ▼
-React Dashboard   Discord Bot
+           ESP32 Devices
+                 │
+                 │ HTTP POST
+                 ▼
+          FastAPI Backend
+                 │
+      Device State Manager
+     (In-Memory Device Store)
+                 │
+      ┌──────────┴──────────┐
+      │                     │
+ REST API             WebSocket
+      │                     │
+      ▼                     ▼
+ React Dashboard      Live Updates
 ```
 
 ---
 
-## 🎯 Current Progress
+# 🏢 Office Layout
 
-### ✅ Completed
-
-- [x] System Architecture
-- [x] Project Planning
-- [x] Device Dataset (`devices.json`)
-
-### 🚧 In Progress
-
-- [ ] Device State Manager
-- [ ] Python Simulator
-
-### ⏳ Upcoming
-
-- [ ] FastAPI Backend
-- [ ] REST API
-- [ ] WebSocket
-- [ ] React Dashboard
-- [ ] Discord Bot
-- [ ] Alert Engine
-- [ ] Power Calculator
-
----
-## 🏢 Office Layout
-
-The simulated office consists of **18 virtual devices** distributed across **3 rooms**.
+The simulated office contains **18 smart devices** distributed across **3 rooms**.
 
 | Room | Devices |
-|------|----------|
+|------|---------|
 | Drawing Room | 2 Fans · 3 Lights · 1 Door |
 | Work Room 1 | 2 Fans · 3 Lights · 1 Door |
 | Work Room 2 | 2 Fans · 3 Lights · 1 Door |
 
 ### Total Devices
 
-- 🌀 Fans : 6
-- 💡 Lights : 9
-- 🚪 Doors : 3
+- 🌀 Fans : **6**
+- 💡 Lights : **9**
+- 🚪 Doors : **3**
 
-**Total = 18 Simulated Devices**
+**Total = 18 Smart Devices**
 
-## 📂 Repository Structure
+---
 
-```text
-backend/
-├── app/
-│   ├── data/
-│   │   └── devices.json
-│   ├── services/
-│   ├── simulator/
-│   └── main.py
+# 📊 Dashboard
 
-discord_bot/
+The React Dashboard provides
 
-docs/
-└── system-architecture.png
+- Live office layout
+- Device status visualization
+- Total active devices
+- Current power consumption
+- Room-wise device summary
+- Live activity feed
+- Real-time WebSocket updates
+
+---
+
+# ⚙ Backend
+
+Built with **FastAPI**
+
+### REST Endpoints
+
+| Method | Endpoint | Description |
+|---------|----------|-------------|
+| GET | `/devices` | Get all devices |
+| GET | `/devices/{id}` | Get a single device |
+| POST | `/devices/{id}` | Update device status |
+| WS | `/ws` | Live WebSocket connection |
+
+---
+
+# 🔌 ESP32 Integration
+
+External IoT devices can communicate with the backend using simple HTTP requests.
+
+Example
+
+```http
+POST /devices/5
 ```
 
-## ⚙ How It Works
+```json
+{
+    "status": true
+}
+```
 
-1. The project loads `devices.json` once during startup.
-2. The Device State Manager stores all device states in memory.
-3. The Python Simulator randomly updates device states.
-4. FastAPI exposes the current state through REST APIs and WebSocket.
-5. The React Dashboard receives live updates via WebSocket.
-6. The Discord Bot retrieves device information through REST APIs and receives alerts from the backend.
+The backend immediately
+
+- updates the device state
+- recalculates power & runtime
+- broadcasts the update via WebSocket
+- refreshes every connected dashboard instantly
+
+---
+
+# ⚡ Live Device Statistics
+
+Each device stores
+
+- Current Status
+- Current Power
+- Rated Power
+- Total Runtime
+- Daily Energy Consumption
+- Last Updated Timestamp
+
+---
+
+# 📂 Project Structure
+
+```text
+Smart-Office-System
+│
+├── backend
+│   ├── app
+│   │   ├── api
+│   │   ├── core
+│   │   ├── data
+│   │   ├── services
+│   │   ├── simulator
+│   │   ├── websocket
+│   │   └── main.py
+│   │
+│   └── requirements.txt
+│
+├── frontend
+│   ├── src
+│   │   ├── components
+│   │   ├── pages
+│   │   ├── routes
+│   │   ├── services
+│   │   └── main.jsx
+│
+├── docs
+│   └── system-architecture.png
+│
+└── README.md
+```
+
+---
+
+# 🚀 Technologies Used
+
+## Backend
+
+- FastAPI
+- Uvicorn
+- WebSocket
+- Pydantic
+
+## Frontend
+
+- React
+- Vite
+- Tailwind CSS
+- Axios
+- Lucide Icons
+
+## IoT
+
+- ESP32
+- HTTP Client
+- JSON
+
+---
+
+# ✅ Current Progress
+
+| Module | Status |
+|---------|--------|
+| Project Planning | ✅ |
+| Device Dataset | ✅ |
+| Device State Manager | ✅ |
+| REST API | ✅ |
+| WebSocket | ✅ |
+| Live Dashboard | ✅ |
+| Office Layout | ✅ |
+| Device Statistics | ✅ |
+| Live Activity | ✅ |
+| ESP32 Integration | 🚧 |
+| Discord Bot | ⏳ |
+| Alert Engine | ⏳ |
+| Authentication | ⏳ |
+| Database | ⏳ |
+
+---
+
+# 🔮 Future Improvements
+
+- MQTT Support
+- Database Persistence
+- Authentication & Roles
+- Alert Notification System
+- Discord Bot Commands
+- Historical Analytics
+- Energy Usage Reports
+- Device Scheduling
+- AI-based Energy Optimization
+
+---
+
+# 👨‍💻 Developed For
+
+**IUT CSE TechFest 2026 Hackathon**
+
+Team Project — Smart Office Monitoring System
