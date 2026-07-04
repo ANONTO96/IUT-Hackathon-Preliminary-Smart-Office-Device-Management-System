@@ -15,6 +15,8 @@ const roomData = [
     fans: 2,
     lights: 3,
     devices: 5,
+    on: 4,
+    off: 1,
     status: "Occupied",
   },
   {
@@ -23,6 +25,8 @@ const roomData = [
     fans: 2,
     lights: 3,
     devices: 5,
+    on: 5,
+    off: 0,
     status: "Occupied",
   },
   {
@@ -31,6 +35,8 @@ const roomData = [
     fans: 2,
     lights: 3,
     devices: 5,
+    on: 3,
+    off: 2,
     status: "Occupied",
   },
 ];
@@ -78,8 +84,53 @@ function CustomTooltip({ active, payload, label }) {
 }
 
 function Analytics() {
+  const totalPower = roomData.reduce((sum, room) => sum + room.power, 0);
+  const totalOn = roomData.reduce((sum, room) => sum + room.on, 0);
+const totalOff = roomData.reduce((sum, room) => sum + room.off, 0);
+  const efficiency =
+  Math.round((totalOn / (totalOn + totalOff)) * 100);
   return (
     <>
+    {/* summary cards */}
+    <div className="grid grid-cols-3 gap-5 mb-6">
+
+  <div className="bg-[#141b2d] rounded-xl p-5">
+    <p className="text-gray-400">Current Power</p>
+    <h2 className="text-3xl text-green-400 font-bold">
+      {totalPower} W
+    </h2>
+  </div>
+
+  <div className="bg-[#141b2d] rounded-xl p-5">
+    <p className="text-gray-400">Rooms Active</p>
+    <h2 className="text-3xl text-yellow-400 font-bold">
+      {roomData.length}
+    </h2>
+  </div>
+  <div className="bg-[#141b2d] rounded-xl p-5">
+
+    <div className="flex justify-between">
+        <span className="text-white">
+            Device Activity
+        </span>
+
+        <span className="text-green-400 font-bold">
+            {efficiency}%
+        </span>
+    </div>
+
+    <div className="bg-[#2a3348] rounded-full h-3 mt-3">
+
+        <div
+            className="bg-green-500 h-3 rounded-full"
+            style={{ width: `${efficiency}%` }}
+        />
+
+    </div>
+
+</div>
+
+</div>
     {/* power consumption chart */}
       <div className="bg-[#141b2d] p-5 rounded-xl h-72">
         <div className="flex items-center justify-between mb-4">
@@ -168,14 +219,20 @@ function Analytics() {
                 </div>
 
                 <div className="text-right">
-                  <p className="text-green-400 font-semibold">
-                    {room.power} W
-                  </p>
+  <p className="text-green-400 font-semibold">
+    {room.power} W
+  </p>
 
-                  <span className="text-xs text-blue-400">
-                    {room.status}
-                  </span>
-                </div>
+  <div className="text-xs mt-1">
+    <span className="text-green-400 mr-2">
+      ON: {room.on}
+    </span>
+
+    <span className="text-red-400">
+      OFF: {room.off}
+    </span>
+  </div>
+</div>
               </div>
 
               <div className="w-full bg-[#2a3348] rounded-full h-2">
