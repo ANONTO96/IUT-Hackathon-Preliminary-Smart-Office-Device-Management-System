@@ -32,6 +32,13 @@ The project simulates and monitors an office environment using a centralized **F
 
 ---
 
+# 🏗 System Architecture
+
+<p align="center">
+<img src="docs/system-architecture.png" width="100%">
+</p>
+
+---
 ## 🤖 Discord Bot
 
 The Discord bot communicates directly with the FastAPI backend and provides real-time office monitoring from any Discord server.
@@ -71,6 +78,13 @@ Example
 
 Did someone forget to switch them off?
 ```
+---
+
+# 🏗 OFFICEBOT DISCORD
+
+<p align="center">
+<img src="docs/Office-bot.png" width="100%">
+</p>
 
 ---
 
@@ -84,12 +98,6 @@ Did someone forget to switch them off?
 
 ---
 
-# 🏗 System Architecture
-
-<p align="center">
-<img src="docs/system-architecture.png" width="100%">
-</p>
----
 # 🏗 ESP32 Architecture Using WOKWI
 
 <p align="center">
