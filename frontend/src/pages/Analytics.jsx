@@ -52,6 +52,16 @@ const powerData = [
   { time: "9 PM", power: 380 },
 ];
 
+const weeklyUsageData = [
+            ["Monday", 20],
+            ["Tuesday", 23],
+            ["Wednesday", 19],
+            ["Thursday", 25],
+            ["Friday", 22],
+            ["Saturday", 16],
+            ["Sunday", 18],
+          ]
+
 function CustomTooltip({ active, payload, label }) {
   if (active && payload && payload.length) {
     return (
@@ -179,6 +189,43 @@ function Analytics() {
             </div>
           ))}
         </div>
+      </div>
+
+      {/* Weekly Usage */}
+      <div className="bg-[#141b2d] rounded-xl p-6">
+
+        <h2 className="text-white text-xl font-semibold mb-5">
+          Weekly Energy Usage
+        </h2>
+
+        <div className="space-y-3">
+
+          {weeklyUsageData.map(([day, value]) => (
+
+            <div key={day}>
+
+              <div className="flex justify-between text-sm mb-1">
+                <span className="text-gray-300">{day}</span>
+                <span className="text-white">{value} kWh</span>
+              </div>
+
+              <div className="bg-[#2c3650] rounded-full h-2">
+
+                <div
+                  className="bg-blue-500 h-2 rounded-full"
+                  style={{
+                    width: `${(value / 30) * 100}%`,
+                  }}
+                />
+
+              </div>
+
+            </div>
+
+          ))}
+
+        </div>
+
       </div>
     </>
   );

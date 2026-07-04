@@ -1,6 +1,18 @@
 import { Wifi } from 'lucide-react'
+import { useState, useEffect } from "react";
 
 function Navbar() {
+  const [currentTime, setCurrentTime] = useState(
+    new Date().toLocaleTimeString()
+  );
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentTime(new Date().toLocaleTimeString());
+    }, 1000);
+
+    return () => clearInterval(interval); // Cleanup
+  }, []);
   return (
     <header className="flex items-center justify-between px-6 py-4 border-b border-white/5 bg-[#0b0f19]">
       <div>
@@ -15,8 +27,8 @@ function Navbar() {
         </span>
         <Wifi size={16} className="text-gray-500" />
         <div className="text-right">
-          <p className="text-gray-500 text-xs">Last Updated</p>
-          <p className="text-white text-sm">10:30:45 AM</p>
+          <p className="text-gray-500 text-xs">Current time</p>
+          <p className="text-white text-sm">{currentTime}</p>
         </div>
       </div>
     </header>

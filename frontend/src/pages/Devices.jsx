@@ -2,7 +2,6 @@ import {
   Cpu,
   Fan,
   Lightbulb,
-  Wifi,
   CheckCircle,
   XCircle,
 } from "lucide-react";
@@ -43,7 +42,7 @@ function Devices() {
     <div className="p-6 space-y-6">
 
       {/* Summary Cards */}
-      <div className="grid grid-cols-4 gap-5">
+      <div className="grid grid-cols-3 gap-5">
 
         <div className="bg-[#141b2d] rounded-xl p-5">
           <Cpu className="text-green-400 mb-3" size={28} />
@@ -63,13 +62,6 @@ function Devices() {
           <h2 className="text-3xl text-red-400 font-bold">3</h2>
         </div>
 
-        <div className="bg-[#141b2d] rounded-xl p-5">
-          <Wifi className="text-blue-500 mb-3" size={28} />
-          <p className="text-gray-400">Network</p>
-          <h2 className="text-3xl text-blue-400 font-bold">
-            Online
-          </h2>
-        </div>
 
       </div>
 
