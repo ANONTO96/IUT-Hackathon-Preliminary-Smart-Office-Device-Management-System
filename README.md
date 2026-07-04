@@ -5,7 +5,6 @@ A real-time Smart Office Monitoring System built for the **IUT CSE TechFest 2026
 The project simulates and monitors an office environment using a centralized **FastAPI** backend. It provides live monitoring through a **React Dashboard**, **Discord Bot**, and **ESP32 IoT devices**, ensuring all clients always reflect the same device state.
 
 ---
-
 # 📌 Features
 
 ## 🌐 Backend
@@ -89,6 +88,12 @@ Did someone forget to switch them off?
 
 <p align="center">
 <img src="docs/system-architecture.png" width="100%">
+</p>
+---
+# 🏗 ESP32 Architecture Using WOKWI
+
+<p align="center">
+<img src="docs/ESP32-circuit-design.png" width="100%">
 </p>
 
 ---
@@ -296,7 +301,7 @@ Smart-Office-System
 | Runtime Calculation | ✅ |
 | Power Monitoring | ✅ |
 | Energy Monitoring | ✅ |
-| ESP32 Integration | 🚧 |
+| ESP32 Integration | ✅ |
 | Discord Bot | ✅ |
 | Slash Commands | ✅ |
 | Automatic Alert System | ✅ |
