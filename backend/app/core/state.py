@@ -1,3 +1,5 @@
+from email.mime import message
+
 from fastapi import WebSocket
 
 class ConnectionManager:
@@ -7,6 +9,7 @@ class ConnectionManager:
     async def connect(self, websocket: WebSocket):
         await websocket.accept()
         self.active_connections.add(websocket)
+        print("CONNECT MANAGER ID:", id(self))
         print(f"Client Connected ({len(self.active_connections)})")
 
     def disconnect(self, websocket: WebSocket):
@@ -14,16 +17,20 @@ class ConnectionManager:
         print(f"Client Disconnected ({len(self.active_connections)})")
 
     async def broadcast(self, message):
+
+        print("BROADCAST MANAGER ID:", id(self))
+        print("Connections:", len(self.active_connections))
         dead = set()
 
-        for conn in self.active_connections:
+        for connection in self.active_connections:
             try:
-                await conn.send_json(message)
-            except:
-                dead.add(conn)
+                await connection.send_json(message)
+            except Exception as e:
+                print(e)
+                dead.add(connection)
 
         for d in dead:
-            self.active_connections.discard(d)
+            self.active_connections.remove(d)
 
 
 # ✅ GLOBAL INSTANCE
