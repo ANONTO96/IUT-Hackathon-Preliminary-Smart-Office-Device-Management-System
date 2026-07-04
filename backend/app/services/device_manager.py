@@ -89,3 +89,5 @@ class DeviceStateManager:
         )
 
         return device
+
+device_manager = DeviceStateManager()

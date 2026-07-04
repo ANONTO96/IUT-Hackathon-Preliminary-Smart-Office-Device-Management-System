@@ -1,50 +1,57 @@
 import asyncio
 import random
 
+from app.services.device_manager import device_manager
+from app.core.state import connection_manager
+
 
 class DeviceSimulator:
 
-    def __init__(self, manager):
-        self.manager = manager
+    def __init__(self):
+        self.manager = device_manager
 
     async def start(self):
+
+        print("🚀 Simulator started")
 
         try:
             while True:
 
-                device = random.choice(
-                    self.manager.get_all_devices()
-                )
+                try:
+                    devices = self.manager.get_all_devices()
 
-                new_status = not device["status"]
+                    device = random.choice(devices)
 
-                updated_device = self.manager.update_device(
-                    device["id"],
-                    new_status
-                )
+                    new_status = not device["status"]
 
-                state = self.get_state_text(
-                    updated_device["type"],
-                    updated_device["status"]
-                )
+                    updated_device = self.manager.update_device(
+                        device["id"],
+                        new_status
+                    )
 
-                print(
-                    f"[SIMULATOR] "
-                    f"{updated_device['name']} | "
-                    f"{state} | "
-                    f"Current: {updated_device['current_power']}W | "
-                    f"Rated: {updated_device['rated_power']}W | "
-                    f"Runtime: {updated_device['total_runtime']}s | "
-                    f"Energy: {updated_device['energy_today']:.6f} kWh | "
-                    f"{updated_device['last_updated']}"
-                )
+                    state = self.get_state_text(
+                        updated_device["type"],
+                        updated_device["status"]
+                    )
 
-                await asyncio.sleep(
-                    random.randint(3, 5)
-                )
+                    print(
+                        f"[SIMULATOR] "
+                        f"{updated_device['name']} | "
+                        f"{state} | "
+                        f"Power: {updated_device['current_power']}W | "
+                        f"Energy: {updated_device['energy_today']:.4f} kWh"
+                    )
+
+                    # ✅ FIXED BROADCAST
+                    await connection_manager.broadcast(updated_device)
+
+                except Exception as e:
+                    print(f"[SIM ERROR] {e}")
+
+                await asyncio.sleep(random.randint(3, 5))
 
         except asyncio.CancelledError:
-            print("\n[SIMULATOR] Simulation stopped.")
+            print("🛑 Simulator stopped safely")
 
     def get_state_text(self, device_type, status):
 
